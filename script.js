@@ -121,3 +121,10 @@ function mostraResultado(){
 }
 
 mostraPergunta();
+
+function respostaSelecionada(opcaoSelecionada){
+const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
+historiaFinal += afirmacoes + “ “;
+atual++;
+mostraPergunta();
+}
