@@ -1,3 +1,4 @@
+export function aleatorio (lista){
 const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
@@ -92,6 +93,7 @@ function mostraPergunta() {
         mostraResultado();
         return;
     }
+
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
     caixaAlternativas.textContent = "";
@@ -108,7 +110,7 @@ function mostraAlternativas(){
 }
 
 function respostaSelecionada(opcaoSelecionada){
-    const afirmacoes = opcaoSelecionada.afirmacao;
+    const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + " ";
     atual++;
     mostraPergunta();
@@ -120,11 +122,9 @@ function mostraResultado(){
     caixaAlternativas.textContent = ""; 
 }
 
-mostraPergunta();
-
-function respostaSelecionada(opcaoSelecionada){
-const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
-historiaFinal += afirmacoes + “ “;
-atual++;
-mostraPergunta();
+function aleatorio(lista){
+    const posicao = Math.floor(Math.random()* lista.length);
+    return lista[posicao];
 }
+
+mostraPergunta();
